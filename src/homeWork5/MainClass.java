@@ -2,6 +2,7 @@ package homeWork5;
 
 
 public class MainClass {
+
     public static final int CARS_COUNT = 4;
 
     public static void main(String[] args) {
@@ -19,9 +20,6 @@ public class MainClass {
 
         for (int i = 0; i < cars.length; i++) {
            new Thread(cars[i]).start();
-
-
-
         }
 
 
