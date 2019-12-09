@@ -2,10 +2,7 @@ package homeWork7;
 
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -32,17 +29,22 @@ public class Main {
 
         }
 
+        Map<Integer,Method> map = new HashMap<>();
+
         for (Method method : testClassFirst.getMethods()) {
 
             Test test = (Test) method.getAnnotation(Test.class);
             if (test != null) {
+                map.put(test.priority(),method);
 
-                System.out.println("Method name: " + method.getName());
-                System.out.println("Priority: " + test.priority());
             }
         }
 
-        
+        for (Map.Entry e: map.entrySet()){
+            System.out.println("Priority: " + e.getKey() );
+             System.out.println("Method name: "+((Method) e.getValue()).getName() );
+        }
+
         int countAfter = 0;
         for (Method method:testClassFirst.getMethods()) {
             AfterSuite afterSuite = (AfterSuite)method.getAnnotation(AfterSuite.class);
